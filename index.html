@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Beautiful Girl</title>
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" />
+        <link rel="icon" href="./assets/favicon/heart.png" type="image/x-icon" />
+        <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.4.2-web/css/all.css" />
+    </head>
+    <body>
+        <div id="main">
+            <div id="header">
+                <h1>Beautiful Girl <i class="fa-regular fa-heart"></i></h1>
+            </div>
+            <div id="content"></div>
+        </div>
+
+        <!-- Code lại đoạn script này -->
+
+        <script>
+            const contentDiv = document.getElementById('content');
+            const coverFullImageDiv = document.getElementById('cover-full-image');
+            const path = './assets/image/image';
+
+            let i = 1;
+            while (i < 145) {
+                const stringFile = `${path} (${i}).jpg`;
+                const wrapperImage = document.createElement('div');
+                wrapperImage.className = 'wrapper-image';
+                wrapperImage.style.backgroundImage = `url('${stringFile}')`;
+                contentDiv.appendChild(wrapperImage);
+
+                wrapperImage.addEventListener('click', () => {
+                    const fullscreenImage = document.createElement('div');
+                    fullscreenImage.className = 'fullscreen-image';
+
+                    fullscreenImage.style.backgroundImage = `url('${stringFile}')`;
+                    contentDiv.appendChild(fullscreenImage);
+
+                    // Thêm sự kiện nhấp chuột để đóng ảnh toàn màn hình
+                    fullscreenImage.addEventListener('click', () => {
+                        fullscreenImage.remove();
+                    });
+                });
+                i++;
+            }
+        </script>
+    </body>
+</html>
